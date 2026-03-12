@@ -4,7 +4,7 @@ import { extractLinkedIssueNumbers, githubGraphql } from "./lib/github.mjs";
 import { getIssueForProjectItem, syncIssueStatusLabel, updateProjectStatusField } from "./lib/project-sync.mjs";
 
 async function getProjectItemByIssueNumber(issueNumber) {
-  const projectId = process.env.GITHUB_PROJECT_ID ?? "";
+  const projectId = process.env.PROJECT_ID ?? "";
   const data = await githubGraphql(
     `
       query FindProjectItem($projectId: ID!) {

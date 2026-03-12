@@ -19,6 +19,8 @@
 | T13 | 建立 gh 欄位探索腳本、Vercel 設定與 Variables 文件 | Completed | 已補欄位探索腳本、vercel.json 與 Variables 文件 |
 | T14 | 修正 GitHub Pages 子路徑白屏並補更多測試資料 | Completed | 已改相對資產路徑並新增 3 筆示例任務 |
 | T15 | 修正無尾斜線 Pages URL 造成 JSON 路徑錯誤 | Completed | 已改為依部署環境注入 base path |
+| T16 | 修正 Project 欄位探索腳本的 gh GraphQL 參數問題 | Completed | 已修正 gh api graphql 參數與 Windows shell 行為 |
+| T17 | 修正 GitHub Variables 命名不可使用 GITHUB_ 前綴 | Completed | 已改為 PROJECT_ 命名並成功抓取可用欄位值 |
 
 ## 執行紀錄
 
@@ -36,3 +38,7 @@
 - 2026-03-13：完成 T14，已修正 Pages 子路徑資產載入並補上更多測試資料，測試與建置通過。
 - 2026-03-13：開始進行 T15，準備修正無尾斜線 Pages URL 導致 `project-data.json` 路徑解析錯誤。
 - 2026-03-13：完成 T15，已改成依部署環境注入 base path，避免無尾斜線 URL 抓錯 JSON 路徑。
+- 2026-03-13：開始進行 T16，準備修正 Project 欄位探索腳本在 Windows PowerShell 下的 GraphQL 參數問題。
+- 2026-03-13：完成 T16，已成功抓出 Project 欄位與可用 status option id。
+- 2026-03-13：開始進行 T17，準備將不可用的 `GITHUB_` 自訂 Variables 改為 `PROJECT_` 命名。
+- 2026-03-13：完成 T17，已確認 `read:project` scope 生效、成功抓出 Project 欄位與 option id，並改用 `PROJECT_` 變數命名。

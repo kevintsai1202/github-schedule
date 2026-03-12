@@ -268,17 +268,17 @@ High
 | --- | --- | --- |
 | `GITHUB_TOKEN` | 是 | Actions 內建 Token |
 | `GITHUB_APP_TOKEN` | 否 | API 層更新 GitHub 用 |
-| `GITHUB_REPOSITORY_NAME` | 是 | 目標倉庫 |
-| `GITHUB_PROJECT_ID` | 是 | Project v2 id |
-| `GITHUB_PROJECT_STATUS_FIELD_ID` | 是 | Status 欄位 id |
-| `GITHUB_PROJECT_START_DATE_FIELD_ID` | 是 | Start date 欄位 id |
-| `GITHUB_PROJECT_TARGET_DATE_FIELD_ID` | 是 | Target date 欄位 id |
-| `GITHUB_PROJECT_STATUS_TODO_OPTION_ID` | 是 | `todo` 對應的 option id |
-| `GITHUB_PROJECT_STATUS_IN_PROGRESS_OPTION_ID` | 否 | `in-progress` option id |
-| `GITHUB_PROJECT_STATUS_IN_REVIEW_OPTION_ID` | 否 | `in-review` option id |
-| `GITHUB_PROJECT_STATUS_DONE_OPTION_ID` | 否 | `done` option id |
-| `GITHUB_PROJECT_STATUS_BLOCKED_OPTION_ID` | 否 | `blocked` option id |
-| `GITHUB_ALLOWED_USERS` | 否 | 可更新排程的人員白名單 |
+| `PROJECT_REPOSITORY_NAME` | 是 | 目標倉庫 |
+| `PROJECT_ID` | 是 | Project v2 id |
+| `PROJECT_STATUS_FIELD_ID` | 是 | Status 欄位 id |
+| `PROJECT_START_DATE_FIELD_ID` | 是 | Start date 欄位 id |
+| `PROJECT_TARGET_DATE_FIELD_ID` | 是 | Target date 欄位 id |
+| `PROJECT_STATUS_TODO_OPTION_ID` | 是 | `todo` 對應的 option id |
+| `PROJECT_STATUS_IN_PROGRESS_OPTION_ID` | 否 | `in-progress` option id |
+| `PROJECT_STATUS_IN_REVIEW_OPTION_ID` | 否 | `in-review` option id |
+| `PROJECT_STATUS_DONE_OPTION_ID` | 否 | `done` option id |
+| `PROJECT_STATUS_BLOCKED_OPTION_ID` | 否 | `blocked` option id |
+| `PROJECT_ALLOWED_USERS` | 否 | 可更新排程的人員白名單 |
 
 ## 7. 相容性說明
 
@@ -295,6 +295,7 @@ High
 - Command：`node scripts/print-project-field-ids.mjs --project-id <project-id>`
 - 說明：列出 Project 欄位 id、`Status` option id，並輸出推薦的 GitHub Variables 內容
 - 前置：`gh auth refresh -s read:project`
+- 實作上需使用可正確傳遞多行 GraphQL query 的 `gh api graphql` 參數形式，避免 Windows shell 將 query 截斷
 
 ### 8.2 輸出 Variables 樣板
 

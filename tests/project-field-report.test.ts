@@ -40,12 +40,12 @@ describe("project field report", () => {
 
   it("應建立完整 variables 清單", () => {
     const entries = buildVariableEntries("project-1", "owner/repo", fields);
-    expect(Object.fromEntries(entries).GITHUB_PROJECT_STATUS_IN_REVIEW_OPTION_ID).toBe("opt-review");
+    expect(Object.fromEntries(entries).PROJECT_STATUS_IN_REVIEW_OPTION_ID).toBe("opt-review");
   });
 
   it("應輸出可貼上的變數文字與 gh 指令", () => {
     const entries = buildVariableEntries("project-1", "owner/repo", fields);
-    expect(formatVariableLines(entries)).toContain("GITHUB_PROJECT_ID=project-1");
-    expect(formatGhVariableCommands(entries, "owner/repo")).toContain("gh variable set GITHUB_PROJECT_ID --repo owner/repo");
+    expect(formatVariableLines(entries)).toContain("PROJECT_ID=project-1");
+    expect(formatGhVariableCommands(entries, "owner/repo")).toContain("gh variable set PROJECT_ID --repo owner/repo");
   });
 });

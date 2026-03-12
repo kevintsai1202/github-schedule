@@ -96,7 +96,7 @@ function buildSummary(workItems) {
 }
 
 async function fetchProjectSnapshot() {
-  const projectId = process.env.GITHUB_PROJECT_ID ?? "";
+  const projectId = process.env.PROJECT_ID ?? "";
 
   if (!projectId) {
     const current = JSON.parse(fs.readFileSync(projectDataPath, "utf8"));

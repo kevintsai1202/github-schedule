@@ -8,8 +8,8 @@ import {
 
 function parseArguments(argv) {
   const options = {
-    projectId: process.env.GITHUB_PROJECT_ID ?? "",
-    repository: process.env.GITHUB_REPOSITORY_NAME ?? process.env.GITHUB_REPOSITORY ?? "",
+    projectId: process.env.PROJECT_ID ?? "",
+    repository: process.env.PROJECT_REPOSITORY_NAME ?? process.env.GITHUB_REPOSITORY ?? "",
     json: false
   };
 
@@ -34,11 +34,11 @@ function parseArguments(argv) {
   }
 
   if (!options.projectId) {
-    throw new Error("請提供 --project-id <project-id> 或設定 GITHUB_PROJECT_ID");
+    throw new Error("請提供 --project-id <project-id> 或設定 PROJECT_ID");
   }
 
   if (!options.repository) {
-    throw new Error("請提供 --repo <owner/repo> 或設定 GITHUB_REPOSITORY_NAME");
+    throw new Error("請提供 --repo <owner/repo> 或設定 PROJECT_REPOSITORY_NAME");
   }
 
   return options;
@@ -47,8 +47,7 @@ function parseArguments(argv) {
 function runGh(argumentsList) {
   const result = spawnSync("gh", argumentsList, {
     encoding: "utf8",
-    stdio: ["pipe", "pipe", "pipe"],
-    shell: process.platform === "win32"
+    stdio: ["pipe", "pipe", "pipe"]
   });
 
   if (result.status !== 0) {
@@ -56,6 +55,10 @@ function runGh(argumentsList) {
   }
 
   return result.stdout.trim();
+}
+
+function compactQuery(query) {
+  return query.replace(/\s+/g, " ").trim();
 }
 
 async function main() {
@@ -97,8 +100,8 @@ async function main() {
   const output = runGh([
     "api",
     "graphql",
-    "-f",
-    `query=${query}`,
+    "--raw-field",
+    `query=${compactQuery(query)}`,
     "-F",
     `projectId=${options.projectId}`
   ]);

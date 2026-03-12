@@ -23,6 +23,8 @@
 - 專案需提供 `gh` 腳本自動列出 Project field id 與 status option id，降低手動設定成本。
 - GitHub Pages 前端資產與 `project-data.json` 載入必須支援 repo 子路徑，不可硬編碼根路徑。
 - base path 需由部署環境注入，GitHub Pages 與 Vercel 不可共用同一個硬編碼路徑。
+- Windows PowerShell 下的 `gh api graphql` 多行 query 需特別處理，避免欄位探索腳本在 CLI 上失敗。
+- GitHub Repository Variables 不可使用 `GITHUB_` 前綴，自訂變數需改用 `PROJECT_` / `APP_` 命名。
 
 ## 2. 資料模型
 

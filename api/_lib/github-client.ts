@@ -27,12 +27,12 @@ export class GitHubMutationService {
 
   constructor() {
     this.token = process.env.GITHUB_APP_TOKEN ?? process.env.GITHUB_TOKEN ?? "";
-    this.repository = process.env.GITHUB_REPOSITORY_NAME ?? "";
+    this.repository = process.env.PROJECT_REPOSITORY_NAME ?? "";
     this.fields = {
-      projectId: process.env.GITHUB_PROJECT_ID ?? "",
-      statusFieldId: process.env.GITHUB_PROJECT_STATUS_FIELD_ID ?? "",
-      startDateFieldId: process.env.GITHUB_PROJECT_START_DATE_FIELD_ID ?? "",
-      targetDateFieldId: process.env.GITHUB_PROJECT_TARGET_DATE_FIELD_ID ?? ""
+      projectId: process.env.PROJECT_ID ?? "",
+      statusFieldId: process.env.PROJECT_STATUS_FIELD_ID ?? "",
+      startDateFieldId: process.env.PROJECT_START_DATE_FIELD_ID ?? "",
+      targetDateFieldId: process.env.PROJECT_TARGET_DATE_FIELD_ID ?? ""
     };
   }
 
@@ -97,11 +97,11 @@ export class GitHubMutationService {
     }
 
     if (!this.repository) {
-      throw new Error("缺少 GITHUB_REPOSITORY_NAME");
+      throw new Error("缺少 PROJECT_REPOSITORY_NAME");
     }
 
     if (!this.fields.projectId) {
-      throw new Error("缺少 GITHUB_PROJECT_ID");
+      throw new Error("缺少 PROJECT_ID");
     }
   }
 
@@ -250,11 +250,11 @@ export class GitHubMutationService {
    */
   private getStatusOptionId(status: string): string {
     const mapping: Record<string, string> = {
-      todo: process.env.GITHUB_PROJECT_STATUS_TODO_OPTION_ID ?? "",
-      "in-progress": process.env.GITHUB_PROJECT_STATUS_IN_PROGRESS_OPTION_ID ?? "",
-      "in-review": process.env.GITHUB_PROJECT_STATUS_IN_REVIEW_OPTION_ID ?? "",
-      done: process.env.GITHUB_PROJECT_STATUS_DONE_OPTION_ID ?? "",
-      blocked: process.env.GITHUB_PROJECT_STATUS_BLOCKED_OPTION_ID ?? ""
+      todo: process.env.PROJECT_STATUS_TODO_OPTION_ID ?? "",
+      "in-progress": process.env.PROJECT_STATUS_IN_PROGRESS_OPTION_ID ?? "",
+      "in-review": process.env.PROJECT_STATUS_IN_REVIEW_OPTION_ID ?? "",
+      done: process.env.PROJECT_STATUS_DONE_OPTION_ID ?? "",
+      blocked: process.env.PROJECT_STATUS_BLOCKED_OPTION_ID ?? ""
     };
 
     const optionId = mapping[status];

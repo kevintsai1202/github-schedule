@@ -4,10 +4,10 @@ import process from "node:process";
  * 解析 owner/repo，供 REST API 共用。
  */
 export function getRepositoryContext() {
-  const repository = process.env.GITHUB_REPOSITORY_NAME ?? process.env.GITHUB_REPOSITORY ?? "";
+  const repository = process.env.PROJECT_REPOSITORY_NAME ?? process.env.GITHUB_REPOSITORY ?? "";
 
   if (!repository.includes("/")) {
-    throw new Error("缺少有效的 GITHUB_REPOSITORY_NAME 或 GITHUB_REPOSITORY");
+    throw new Error("缺少有效的 PROJECT_REPOSITORY_NAME 或 GITHUB_REPOSITORY");
   }
 
   const [owner, repo] = repository.split("/");
@@ -91,11 +91,11 @@ export async function githubRest(pathname, options = {}) {
  */
 export function getStatusOptionMap() {
   return {
-    todo: process.env.GITHUB_PROJECT_STATUS_TODO_OPTION_ID ?? "",
-    "in-progress": process.env.GITHUB_PROJECT_STATUS_IN_PROGRESS_OPTION_ID ?? "",
-    "in-review": process.env.GITHUB_PROJECT_STATUS_IN_REVIEW_OPTION_ID ?? "",
-    done: process.env.GITHUB_PROJECT_STATUS_DONE_OPTION_ID ?? "",
-    blocked: process.env.GITHUB_PROJECT_STATUS_BLOCKED_OPTION_ID ?? ""
+    todo: process.env.PROJECT_STATUS_TODO_OPTION_ID ?? "",
+    "in-progress": process.env.PROJECT_STATUS_IN_PROGRESS_OPTION_ID ?? "",
+    "in-review": process.env.PROJECT_STATUS_IN_REVIEW_OPTION_ID ?? "",
+    done: process.env.PROJECT_STATUS_DONE_OPTION_ID ?? "",
+    blocked: process.env.PROJECT_STATUS_BLOCKED_OPTION_ID ?? ""
   };
 }
 

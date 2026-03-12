@@ -8,16 +8,16 @@ export function buildVariableEntries(projectId, repository, fields) {
   const targetDateField = findField("Target date");
 
   const entries = [
-    ["GITHUB_REPOSITORY_NAME", repository],
-    ["GITHUB_PROJECT_ID", projectId],
-    ["GITHUB_PROJECT_STATUS_FIELD_ID", statusField?.id ?? ""],
-    ["GITHUB_PROJECT_START_DATE_FIELD_ID", startDateField?.id ?? ""],
-    ["GITHUB_PROJECT_TARGET_DATE_FIELD_ID", targetDateField?.id ?? ""],
-    ["GITHUB_PROJECT_STATUS_TODO_OPTION_ID", findStatusOptionId(statusField, ["Todo", "todo"])],
-    ["GITHUB_PROJECT_STATUS_IN_PROGRESS_OPTION_ID", findStatusOptionId(statusField, ["In Progress", "in-progress"])],
-    ["GITHUB_PROJECT_STATUS_IN_REVIEW_OPTION_ID", findStatusOptionId(statusField, ["In Review", "in-review"])],
-    ["GITHUB_PROJECT_STATUS_DONE_OPTION_ID", findStatusOptionId(statusField, ["Done", "done"])],
-    ["GITHUB_PROJECT_STATUS_BLOCKED_OPTION_ID", findStatusOptionId(statusField, ["Blocked", "blocked"])]
+    ["PROJECT_REPOSITORY_NAME", repository],
+    ["PROJECT_ID", projectId],
+    ["PROJECT_STATUS_FIELD_ID", statusField?.id ?? ""],
+    ["PROJECT_START_DATE_FIELD_ID", startDateField?.id ?? ""],
+    ["PROJECT_TARGET_DATE_FIELD_ID", targetDateField?.id ?? ""],
+    ["PROJECT_STATUS_TODO_OPTION_ID", findStatusOptionId(statusField, ["Todo", "todo"])],
+    ["PROJECT_STATUS_IN_PROGRESS_OPTION_ID", findStatusOptionId(statusField, ["In Progress", "in-progress"])],
+    ["PROJECT_STATUS_IN_REVIEW_OPTION_ID", findStatusOptionId(statusField, ["In Review", "in-review"])],
+    ["PROJECT_STATUS_DONE_OPTION_ID", findStatusOptionId(statusField, ["Done", "done"])],
+    ["PROJECT_STATUS_BLOCKED_OPTION_ID", findStatusOptionId(statusField, ["Blocked", "blocked"])]
   ];
 
   return entries;

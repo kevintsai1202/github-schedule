@@ -9,10 +9,10 @@ import {
 
 function getProjectEnv() {
   return {
-    projectId: process.env.GITHUB_PROJECT_ID ?? "",
-    statusFieldId: process.env.GITHUB_PROJECT_STATUS_FIELD_ID ?? "",
-    startDateFieldId: process.env.GITHUB_PROJECT_START_DATE_FIELD_ID ?? "",
-    targetDateFieldId: process.env.GITHUB_PROJECT_TARGET_DATE_FIELD_ID ?? ""
+    projectId: process.env.PROJECT_ID ?? "",
+    statusFieldId: process.env.PROJECT_STATUS_FIELD_ID ?? "",
+    startDateFieldId: process.env.PROJECT_START_DATE_FIELD_ID ?? "",
+    targetDateFieldId: process.env.PROJECT_TARGET_DATE_FIELD_ID ?? ""
   };
 }
 
