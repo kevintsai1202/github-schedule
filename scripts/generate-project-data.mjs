@@ -5,6 +5,15 @@ import { getRepositoryContext, githubGraphql } from "./lib/github.mjs";
 
 const projectDataPath = path.resolve("public", "project-data.json");
 
+/**
+ * 載入目前的靜態快照，作為無法讀取 GitHub Project 時的 fallback。
+ */
+function readCurrentSnapshot() {
+  const current = JSON.parse(fs.readFileSync(projectDataPath, "utf8"));
+  current.generatedAt = new Date().toISOString();
+  return current;
+}
+
 function pickFieldValue(fieldValues, fieldName) {
   return fieldValues.find((node) => node.field?.name === fieldName) ?? null;
 }
@@ -99,59 +108,59 @@ async function fetchProjectSnapshot() {
   const projectId = process.env.PROJECT_ID ?? "";
 
   if (!projectId) {
-    const current = JSON.parse(fs.readFileSync(projectDataPath, "utf8"));
-    current.generatedAt = new Date().toISOString();
-    return current;
+    return readCurrentSnapshot();
   }
 
-  const data = await githubGraphql(
-    `
-      query GetProjectItems($projectId: ID!) {
-        node(id: $projectId) {
-          ... on ProjectV2 {
-            id
-            items(first: 100) {
-              nodes {
-                id
-                fieldValues(first: 20) {
-                  nodes {
-                    ... on ProjectV2ItemFieldDateValue {
-                      date
-                      field {
-                        ... on ProjectV2FieldCommon {
-                          name
+  try {
+    const data = await githubGraphql(
+      `
+        query GetProjectItems($projectId: ID!) {
+          node(id: $projectId) {
+            ... on ProjectV2 {
+              id
+              items(first: 100) {
+                nodes {
+                  id
+                  fieldValues(first: 20) {
+                    nodes {
+                      ... on ProjectV2ItemFieldDateValue {
+                        date
+                        field {
+                          ... on ProjectV2FieldCommon {
+                            name
+                          }
                         }
                       }
-                    }
-                    ... on ProjectV2ItemFieldSingleSelectValue {
-                      name
-                      field {
-                        ... on ProjectV2FieldCommon {
-                          name
+                      ... on ProjectV2ItemFieldSingleSelectValue {
+                        name
+                        field {
+                          ... on ProjectV2FieldCommon {
+                            name
+                          }
                         }
                       }
                     }
                   }
-                }
-                content {
-                  ... on Issue {
-                    number
-                    title
-                    url
-                    updatedAt
-                    milestone {
+                  content {
+                    ... on Issue {
+                      number
                       title
-                    }
-                    assignees(first: 20) {
-                      nodes {
-                        login
-                        name
-                        avatarUrl
+                      url
+                      updatedAt
+                      milestone {
+                        title
                       }
-                    }
-                    labels(first: 40) {
-                      nodes {
-                        name
+                      assignees(first: 20) {
+                        nodes {
+                          login
+                          name
+                          avatarUrl
+                        }
+                      }
+                      labels(first: 40) {
+                        nodes {
+                          name
+                        }
                       }
                     }
                   }
@@ -160,25 +169,30 @@ async function fetchProjectSnapshot() {
             }
           }
         }
+      `,
+      {
+        projectId
       }
-    `,
-    {
-      projectId
-    }
-  );
+    );
 
-  const project = data.node;
-  const workItems = project.items.nodes.filter((item) => item.content?.number).map((item) => toWorkItem(item, project.id));
+    const project = data.node;
+    const workItems = project.items.nodes.filter((item) => item.content?.number).map((item) => toWorkItem(item, project.id));
 
-  return {
-    generatedAt: new Date().toISOString(),
-    repository: getRepositoryContext().repository,
-    projectId: project.id,
-    milestones: [...new Set(workItems.map((item) => item.milestone).filter(Boolean))],
-    members: buildMemberLoad(workItems),
-    workItems,
-    summary: buildSummary(workItems)
-  };
+    return {
+      generatedAt: new Date().toISOString(),
+      repository: getRepositoryContext().repository,
+      projectId: project.id,
+      milestones: [...new Set(workItems.map((item) => item.milestone).filter(Boolean))],
+      members: buildMemberLoad(workItems),
+      workItems,
+      summary: buildSummary(workItems)
+    };
+  } catch (error) {
+    console.warn(
+      `[generate-project-data] 無法讀取 GitHub Project，改用現有靜態快照：${error instanceof Error ? error.message : String(error)}`
+    );
+    return readCurrentSnapshot();
+  }
 }
 
 /**

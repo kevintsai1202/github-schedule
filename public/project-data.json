@@ -1,8 +1,11 @@
 {
-  "generatedAt": "2026-03-12T23:40:00+08:00",
+  "generatedAt": "2026-03-12T18:15:43.913Z",
   "repository": "kevintsai1202/github-schedule",
   "projectId": "PVT_demo_001",
-  "milestones": ["Sprint 1", "Sprint 2"],
+  "milestones": [
+    "Sprint 1",
+    "Sprint 2"
+  ],
   "members": [
     {
       "login": "alice",
@@ -38,7 +41,13 @@
       "status": "done",
       "priority": "High",
       "milestone": "Sprint 1",
-      "assignees": [{ "login": "alice", "name": "Alice", "avatarUrl": "https://avatars.githubusercontent.com/u/1?v=4" }],
+      "assignees": [
+        {
+          "login": "alice",
+          "name": "Alice",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/1?v=4"
+        }
+      ],
       "projectItemId": "PVTI_demo_12",
       "projectId": "PVT_demo_001",
       "startDate": "2026-03-10",
@@ -46,8 +55,18 @@
       "durationDays": 3,
       "progressState": "done",
       "blockedReason": "",
-      "linkedPrs": [{ "number": 52, "title": "feat: add hero and summary", "url": "https://github.com/kevintsai1202/github-schedule/pull/52", "state": "merged" }],
-      "labels": ["status:done", "type:feature"],
+      "linkedPrs": [
+        {
+          "number": 52,
+          "title": "feat: add hero and summary",
+          "url": "https://github.com/kevintsai1202/github-schedule/pull/52",
+          "state": "merged"
+        }
+      ],
+      "labels": [
+        "status:done",
+        "type:feature"
+      ],
       "updatedAt": "2026-03-12T14:00:00Z"
     },
     {
@@ -58,7 +77,13 @@
       "status": "in-progress",
       "priority": "Critical",
       "milestone": "Sprint 1",
-      "assignees": [{ "login": "bob", "name": "Bob", "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4" }],
+      "assignees": [
+        {
+          "login": "bob",
+          "name": "Bob",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4"
+        }
+      ],
       "projectItemId": "PVTI_demo_13",
       "projectId": "PVT_demo_001",
       "startDate": "2026-03-13",
@@ -66,8 +91,18 @@
       "durationDays": 5,
       "progressState": "on-track",
       "blockedReason": "",
-      "linkedPrs": [{ "number": 53, "title": "feat: snapshot builder", "url": "https://github.com/kevintsai1202/github-schedule/pull/53", "state": "open" }],
-      "labels": ["status:in-progress", "type:feature"],
+      "linkedPrs": [
+        {
+          "number": 53,
+          "title": "feat: snapshot builder",
+          "url": "https://github.com/kevintsai1202/github-schedule/pull/53",
+          "state": "open"
+        }
+      ],
+      "labels": [
+        "status:in-progress",
+        "type:feature"
+      ],
       "updatedAt": "2026-03-12T15:00:00Z"
     },
     {
@@ -78,7 +113,13 @@
       "status": "in-review",
       "priority": "High",
       "milestone": "Sprint 1",
-      "assignees": [{ "login": "alice", "name": "Alice", "avatarUrl": "https://avatars.githubusercontent.com/u/1?v=4" }],
+      "assignees": [
+        {
+          "login": "alice",
+          "name": "Alice",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/1?v=4"
+        }
+      ],
       "projectItemId": "PVTI_demo_14",
       "projectId": "PVT_demo_001",
       "startDate": "2026-03-14",
@@ -86,8 +127,18 @@
       "durationDays": 5,
       "progressState": "at-risk",
       "blockedReason": "",
-      "linkedPrs": [{ "number": 54, "title": "feat: gantt interactions", "url": "https://github.com/kevintsai1202/github-schedule/pull/54", "state": "open" }],
-      "labels": ["status:in-review", "type:feature"],
+      "linkedPrs": [
+        {
+          "number": 54,
+          "title": "feat: gantt interactions",
+          "url": "https://github.com/kevintsai1202/github-schedule/pull/54",
+          "state": "open"
+        }
+      ],
+      "labels": [
+        "status:in-review",
+        "type:feature"
+      ],
       "updatedAt": "2026-03-12T16:00:00Z"
     },
     {
@@ -98,7 +149,13 @@
       "status": "blocked",
       "priority": "High",
       "milestone": "Sprint 2",
-      "assignees": [{ "login": "bob", "name": "Bob", "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4" }],
+      "assignees": [
+        {
+          "login": "bob",
+          "name": "Bob",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4"
+        }
+      ],
       "projectItemId": "PVTI_demo_15",
       "projectId": "PVT_demo_001",
       "startDate": "2026-03-16",
@@ -107,7 +164,10 @@
       "progressState": "blocked",
       "blockedReason": "等待 GitHub App 權限設定",
       "linkedPrs": [],
-      "labels": ["status:blocked", "type:task"],
+      "labels": [
+        "status:blocked",
+        "type:task"
+      ],
       "updatedAt": "2026-03-12T17:00:00Z"
     },
     {
@@ -127,7 +187,10 @@
       "progressState": "at-risk",
       "blockedReason": "",
       "linkedPrs": [],
-      "labels": ["status:todo", "type:automation"],
+      "labels": [
+        "status:todo",
+        "type:automation"
+      ],
       "updatedAt": "2026-03-12T18:00:00Z"
     },
     {
@@ -139,7 +202,11 @@
       "priority": "Medium",
       "milestone": "Sprint 2",
       "assignees": [
-        { "login": "alice", "name": "Alice", "avatarUrl": "https://avatars.githubusercontent.com/u/1?v=4" }
+        {
+          "login": "alice",
+          "name": "Alice",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/1?v=4"
+        }
       ],
       "projectItemId": "PVTI_demo_17",
       "projectId": "PVT_demo_001",
@@ -149,7 +216,10 @@
       "progressState": "on-track",
       "blockedReason": "",
       "linkedPrs": [],
-      "labels": ["status:todo", "type:docs"],
+      "labels": [
+        "status:todo",
+        "type:docs"
+      ],
       "updatedAt": "2026-03-13T00:10:00Z"
     },
     {
@@ -161,7 +231,11 @@
       "priority": "High",
       "milestone": "Sprint 2",
       "assignees": [
-        { "login": "bob", "name": "Bob", "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4" }
+        {
+          "login": "bob",
+          "name": "Bob",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4"
+        }
       ],
       "projectItemId": "PVTI_demo_18",
       "projectId": "PVT_demo_001",
@@ -171,9 +245,17 @@
       "progressState": "on-track",
       "blockedReason": "",
       "linkedPrs": [
-        { "number": 58, "title": "feat: configure vercel api base url", "url": "https://github.com/kevintsai1202/github-schedule/pull/58", "state": "open" }
+        {
+          "number": 58,
+          "title": "feat: configure vercel api base url",
+          "url": "https://github.com/kevintsai1202/github-schedule/pull/58",
+          "state": "open"
+        }
       ],
-      "labels": ["status:in-progress", "type:infra"],
+      "labels": [
+        "status:in-progress",
+        "type:infra"
+      ],
       "updatedAt": "2026-03-13T00:20:00Z"
     },
     {
@@ -185,8 +267,16 @@
       "priority": "High",
       "milestone": "Sprint 3",
       "assignees": [
-        { "login": "alice", "name": "Alice", "avatarUrl": "https://avatars.githubusercontent.com/u/1?v=4" },
-        { "login": "bob", "name": "Bob", "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4" }
+        {
+          "login": "alice",
+          "name": "Alice",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/1?v=4"
+        },
+        {
+          "login": "bob",
+          "name": "Bob",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4"
+        }
       ],
       "projectItemId": "PVTI_demo_19",
       "projectId": "PVT_demo_001",
@@ -196,9 +286,17 @@
       "progressState": "done",
       "blockedReason": "",
       "linkedPrs": [
-        { "number": 59, "title": "feat: gantt zoom and swimlanes", "url": "https://github.com/kevintsai1202/github-schedule/pull/59", "state": "merged" }
+        {
+          "number": 59,
+          "title": "feat: gantt zoom and swimlanes",
+          "url": "https://github.com/kevintsai1202/github-schedule/pull/59",
+          "state": "merged"
+        }
       ],
-      "labels": ["status:done", "type:feature"],
+      "labels": [
+        "status:done",
+        "type:feature"
+      ],
       "updatedAt": "2026-03-13T00:30:00Z"
     }
   ]

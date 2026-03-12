@@ -26,6 +26,7 @@
 - Windows PowerShell 下的 `gh api graphql` 多行 query 需特別處理，避免欄位探索腳本在 CLI 上失敗。
 - GitHub Repository Variables 不可使用 `GITHUB_` 前綴，自訂變數需改用 `PROJECT_` / `APP_` 命名。
 - GitHub Pages 若未設定獨立 mutation API，不可假設同網域存在 `/api/*`；前端需自動進入唯讀模式並清楚提示。
+- GitHub Actions 若無法讀取 Project v2，建置流程需退回現有 `public/project-data.json`，不可阻塞 Pages 發佈。
 
 ## 2. 資料模型
 

@@ -289,6 +289,7 @@ High
 - Status 與 Assignees 需同時維護 Project 欄位與 Issue 對應欄位。
 - 第一版只支援單一 repo、單一 GitHub Project。
 - Pages 發布需在 Repository Settings 的 `Pages > Build and deployment` 選擇 `GitHub Actions`。
+- 若 Actions 內建 Token 對 Project v2 權限不足，`generate-project-data` 需保留現有 `public/project-data.json` 作為 fallback，避免 Pages 發布失敗。
 
 ## 8. gh 輔助腳本
 

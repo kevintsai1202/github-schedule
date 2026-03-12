@@ -22,6 +22,7 @@
 | T16 | 修正 Project 欄位探索腳本的 gh GraphQL 參數問題 | Completed | 已修正 gh api graphql 參數與 Windows shell 行為 |
 | T17 | 修正 GitHub Variables 命名不可使用 GITHUB_ 前綴 | Completed | 已改為 PROJECT_ 命名並成功抓取可用欄位值 |
 | T18 | 修正 GitHub Pages 無 API 時的甘特圖寫入錯誤 | Completed | 已加入唯讀模式、停用控制與非 JSON 回應防呆 |
+| T19 | 修正 Pages workflow 無法讀取 Project v2 時的部署失敗 | Completed | 讀取失敗時改為 fallback 到既有 `project-data.json` |
 
 ## 執行紀錄
 
@@ -45,3 +46,5 @@
 - 2026-03-13：完成 T17，已確認 `read:project` scope 生效、成功抓出 Project 欄位與 option id，並改用 `PROJECT_` 變數命名。
 - 2026-03-13：開始進行 T18，準備修正 GitHub Pages 在未部署 API 時仍嘗試寫入而導致的 JSON parse 錯誤。
 - 2026-03-13：完成 T18，GitHub Pages 未設定 API 時會顯示唯讀提示並停用甘特圖調整，不再出現 JSON parse 錯誤。
+- 2026-03-13：開始進行 T19，準備處理 Actions 內建 Token 無法讀取個人 Project v2 導致 Pages 建置失敗的問題。
+- 2026-03-13：完成 T19，`generate-project-data` 在無法讀取 Project v2 時會保留現有靜態資料，確保 Pages 建置可持續發佈。
