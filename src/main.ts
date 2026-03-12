@@ -1,4 +1,4 @@
-import { patchAssignees, patchSchedule, patchStatus, fetchProjectSnapshot } from "./api";
+import { patchAssignees, patchSchedule, patchStatus, fetchProjectSnapshot, isMutationApiConfigured } from "./api";
 import { renderBoard } from "./board";
 import { renderSummary } from "./dashboard";
 import { renderGantt } from "./gantt";
@@ -10,6 +10,7 @@ import "./style.css";
 
 const app = document.querySelector<HTMLDivElement>("#app");
 const store = new DashboardStore();
+const mutationEnabled = isMutationApiConfigured();
 
 if (!app) {
   throw new Error("找不到 app root");
@@ -39,6 +40,7 @@ function paint(): void {
           <strong>${new Date(snapshot.generatedAt).toLocaleString("zh-TW")}</strong>
         </aside>
       </header>
+      ${mutationEnabled ? "" : '<section class="mode-banner">目前使用 GitHub Pages 展示模式，尚未設定可寫入 API，因此甘特圖調整功能已停用。</section>'}
       ${renderSummary(snapshot)}
       <section class="panel-stack">
         ${renderBoard(snapshot.workItems)}
@@ -58,6 +60,8 @@ function paint(): void {
       onResize: async (projectItemId, edge, offsetDays) => handleResize(projectItemId, edge, offsetDays),
       onStatusChange: async (projectItemId, status) => handleStatus(projectItemId, status),
       onAssigneePrompt: async (projectItemId) => handleAssignees(projectItemId)
+    }, {
+      editable: mutationEnabled
     })
   );
 }

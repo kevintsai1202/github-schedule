@@ -86,6 +86,15 @@ select {
   box-shadow: var(--shadow);
 }
 
+.mode-banner {
+  margin: 24px 0;
+  padding: 14px 18px;
+  border: 1px solid rgba(180, 83, 9, 0.18);
+  border-radius: 18px;
+  background: rgba(254, 243, 199, 0.9);
+  color: #92400e;
+}
+
 .summary-card,
 .panel {
   padding: 22px;
@@ -203,6 +212,14 @@ select {
 .assignee-button {
   padding: 8px 10px;
   cursor: pointer;
+}
+
+.drag-controls button:disabled,
+.drag-handle:disabled,
+.assignee-button:disabled,
+.status-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
 }
 
 .status-select {

@@ -8,12 +8,16 @@ export interface GanttHandlers {
   onAssigneePrompt: (projectItemId: string) => Promise<void>;
 }
 
+export interface GanttRenderOptions {
+  editable: boolean;
+}
+
 const STATUS_OPTIONS = ["todo", "in-progress", "in-review", "blocked", "done"];
 
 /**
  * 產生桌機優先的甘特圖結構與互動控制。
  */
-export function renderGantt(items: WorkItem[], handlers: GanttHandlers): HTMLElement {
+export function renderGantt(items: WorkItem[], handlers: GanttHandlers, options: GanttRenderOptions): HTMLElement {
   const range = getDateRange(items);
   const days = Math.max(10, daysFrom(range.start, addDays(range.end, 1)));
   const root = document.createElement("section");
@@ -22,7 +26,7 @@ export function renderGantt(items: WorkItem[], handlers: GanttHandlers): HTMLEle
   root.innerHTML = `
     <div class="panel-header">
       <h2>甘特圖</h2>
-      <p>可拖拉調整時程，也可直接改狀態與負責人。</p>
+      <p>${options.editable ? "可拖拉調整時程，也可直接改狀態與負責人。" : "目前為唯讀展示模式，請部署 API 後再啟用調整。"}</p>
     </div>
     <div class="gantt-shell">
       <div class="gantt-head"></div>
@@ -58,10 +62,10 @@ export function renderGantt(items: WorkItem[], handlers: GanttHandlers): HTMLEle
         <a href="${item.issueUrl}" target="_blank" rel="noreferrer">#${item.issueNumber}</a>
         <strong>${truncate(item.title, 42)}</strong>
         <span>${item.milestone ?? "未排里程碑"}</span>
-        <button class="assignee-button" data-assignee-id="${item.projectItemId}">
+        <button class="assignee-button" data-assignee-id="${item.projectItemId}" ${options.editable ? "" : "disabled"}>
           ${item.assignees.map((assignee) => assignee.login).join(", ") || "指派"}
         </button>
-        <select class="status-select" data-status-id="${item.projectItemId}">
+        <select class="status-select" data-status-id="${item.projectItemId}" ${options.editable ? "" : "disabled"}>
           ${STATUS_OPTIONS.map(
             (status) => `<option value="${status}" ${item.status === status ? "selected" : ""}>${status}</option>`
           ).join("")}
@@ -71,13 +75,13 @@ export function renderGantt(items: WorkItem[], handlers: GanttHandlers): HTMLEle
         <div class="gantt-bar ${statusToken(item.status)}"
           style="grid-column: ${startOffset + 1} / span ${duration};"
           data-item-id="${item.projectItemId}">
-          <button class="drag-handle left" data-resize-start="${item.projectItemId}" aria-label="調整開始日"></button>
+          <button class="drag-handle left" data-resize-start="${item.projectItemId}" aria-label="調整開始日" ${options.editable ? "" : "disabled"}></button>
           <span>${item.startDate ?? "?"} → ${item.targetDate ?? "?"}</span>
           <div class="drag-controls">
-            <button data-shift-left="${item.projectItemId}" aria-label="向左平移">-1d</button>
-            <button data-shift-right="${item.projectItemId}" aria-label="向右平移">+1d</button>
+            <button data-shift-left="${item.projectItemId}" aria-label="向左平移" ${options.editable ? "" : "disabled"}>-1d</button>
+            <button data-shift-right="${item.projectItemId}" aria-label="向右平移" ${options.editable ? "" : "disabled"}>+1d</button>
           </div>
-          <button class="drag-handle right" data-resize-end="${item.projectItemId}" aria-label="調整截止日"></button>
+          <button class="drag-handle right" data-resize-end="${item.projectItemId}" aria-label="調整截止日" ${options.editable ? "" : "disabled"}></button>
         </div>
       </div>
     `;

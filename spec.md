@@ -25,6 +25,7 @@
 - base path 需由部署環境注入，GitHub Pages 與 Vercel 不可共用同一個硬編碼路徑。
 - Windows PowerShell 下的 `gh api graphql` 多行 query 需特別處理，避免欄位探索腳本在 CLI 上失敗。
 - GitHub Repository Variables 不可使用 `GITHUB_` 前綴，自訂變數需改用 `PROJECT_` / `APP_` 命名。
+- GitHub Pages 若未設定獨立 mutation API，不可假設同網域存在 `/api/*`；前端需自動進入唯讀模式並清楚提示。
 
 ## 2. 資料模型
 
@@ -399,6 +400,7 @@ stateDiagram-v2
 - 甘特圖需支援拖拉調整開始/截止日。
 - 甘特圖需支援更新 `status` 與 `assignees`。
 - API 更新失敗時，前端需回滾 optimistic state。
+- 若未設定 `VITE_API_BASE_URL`，前端需停用甘特圖寫入操作並顯示唯讀提示，不可出現 JSON parse 錯誤。
 - `project-data.json` 必須統一來自 GitHub Issues、PRs、Projects 資料。
 - GitHub Pages workflow 必須使用官方 Pages actions 完成部署。
 - 專案需提供可在 PowerShell 7+ 執行的 `gh` 腳本輸出 Project 欄位與變數樣板。

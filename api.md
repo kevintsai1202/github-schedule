@@ -268,6 +268,7 @@ High
 | --- | --- | --- |
 | `GITHUB_TOKEN` | 是 | Actions 內建 Token |
 | `GITHUB_APP_TOKEN` | 否 | API 層更新 GitHub 用 |
+| `VITE_API_BASE_URL` | 否 | 前端寫入 API 基底網址，未設定時前端進入唯讀模式 |
 | `PROJECT_REPOSITORY_NAME` | 是 | 目標倉庫 |
 | `PROJECT_ID` | 是 | Project v2 id |
 | `PROJECT_STATUS_FIELD_ID` | 是 | Status 欄位 id |
@@ -284,6 +285,7 @@ High
 
 - 儀表板對讀取端採純靜態輸出。
 - 甘特圖編輯需依賴 serverless API，不能只靠 GitHub Pages。
+- GitHub Pages 若未設定 `VITE_API_BASE_URL`，前端僅提供展示，不發送任何 `/api/*` 寫入請求。
 - Status 與 Assignees 需同時維護 Project 欄位與 Issue 對應欄位。
 - 第一版只支援單一 repo、單一 GitHub Project。
 - Pages 發布需在 Repository Settings 的 `Pages > Build and deployment` 選擇 `GitHub Actions`。
