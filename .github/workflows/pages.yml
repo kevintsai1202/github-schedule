@@ -1,0 +1,74 @@
+name: Build Dashboard
+
+on:
+  push:
+    branches:
+      - main
+  issues:
+    types:
+      - opened
+      - edited
+      - reopened
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-dashboard:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_REPOSITORY_NAME: ${{ github.repository }}
+      GITHUB_PROJECT_ID: ${{ vars.GITHUB_PROJECT_ID }}
+      GITHUB_PROJECT_STATUS_FIELD_ID: ${{ vars.GITHUB_PROJECT_STATUS_FIELD_ID }}
+      GITHUB_PROJECT_START_DATE_FIELD_ID: ${{ vars.GITHUB_PROJECT_START_DATE_FIELD_ID }}
+      GITHUB_PROJECT_TARGET_DATE_FIELD_ID: ${{ vars.GITHUB_PROJECT_TARGET_DATE_FIELD_ID }}
+      GITHUB_PROJECT_STATUS_TODO_OPTION_ID: ${{ vars.GITHUB_PROJECT_STATUS_TODO_OPTION_ID }}
+      GITHUB_PROJECT_STATUS_IN_PROGRESS_OPTION_ID: ${{ vars.GITHUB_PROJECT_STATUS_IN_PROGRESS_OPTION_ID }}
+      GITHUB_PROJECT_STATUS_IN_REVIEW_OPTION_ID: ${{ vars.GITHUB_PROJECT_STATUS_IN_REVIEW_OPTION_ID }}
+      GITHUB_PROJECT_STATUS_DONE_OPTION_ID: ${{ vars.GITHUB_PROJECT_STATUS_DONE_OPTION_ID }}
+      GITHUB_PROJECT_STATUS_BLOCKED_OPTION_ID: ${{ vars.GITHUB_PROJECT_STATUS_BLOCKED_OPTION_ID }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync issue into project
+        if: github.event_name == 'issues' && (github.event.action == 'opened' || github.event.action == 'edited' || github.event.action == 'reopened')
+        run: node scripts/sync-project-item.mjs
+
+      - name: Generate project data
+        run: node scripts/generate-project-data.mjs
+
+      - name: Build dashboard
+        run: npm run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

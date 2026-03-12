@@ -1,0 +1,252 @@
+:root {
+  color-scheme: light;
+  --panel: rgba(255, 250, 242, 0.92);
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --line: rgba(31, 41, 55, 0.12);
+  --brand: #045d56;
+  --danger-soft: #fde5df;
+  --progress-soft: #dbeafe;
+  --review-soft: #fef3c7;
+  --done-soft: #dcfce7;
+  --todo-soft: #e5e7eb;
+  --shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+  font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top right, rgba(4, 93, 86, 0.16), transparent 24%),
+    linear-gradient(180deg, #f7f1e8 0%, #ede4d6 100%);
+}
+
+button,
+select {
+  font: inherit;
+}
+
+.page-shell {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px 20px 56px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 20px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.28)),
+    linear-gradient(135deg, rgba(4, 93, 86, 0.08), rgba(29, 78, 216, 0.08));
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--brand);
+  font-size: 0.84rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 1.04;
+}
+
+.hero-copy,
+.panel-header p,
+.hero-side span,
+.summary-label {
+  color: var(--muted);
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.summary-card,
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.summary-card,
+.panel {
+  padding: 22px;
+}
+
+.summary-card strong {
+  font-size: 2rem;
+}
+
+.panel-stack {
+  display: grid;
+  gap: 20px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(220px, 1fr));
+  gap: 14px;
+  overflow-x: auto;
+}
+
+.board-column {
+  min-height: 280px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.board-column header,
+.member-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.board-list,
+.member-table,
+.gantt-body {
+  display: grid;
+  gap: 10px;
+}
+
+.board-card,
+.member-row,
+.gantt-meta {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.member-row {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+}
+
+.gantt-shell {
+  overflow-x: auto;
+}
+
+.gantt-head,
+.gantt-row {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(720px, 1fr);
+  gap: 14px;
+}
+
+.gantt-scale,
+.gantt-track {
+  display: grid;
+  gap: 6px;
+}
+
+.gantt-scale span {
+  padding: 10px 4px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.58);
+  text-align: center;
+  font-size: 0.82rem;
+}
+
+.gantt-bar {
+  display: grid;
+  grid-template-columns: 14px 1fr auto 14px;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 8px 10px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+}
+
+.drag-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.drag-controls button,
+.drag-handle,
+.assignee-button,
+.status-select {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.76);
+  border-radius: 12px;
+}
+
+.drag-controls button,
+.assignee-button {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.status-select {
+  padding: 8px 10px;
+}
+
+.drag-handle {
+  width: 14px;
+  height: 34px;
+  cursor: ew-resize;
+}
+
+.is-done {
+  background: var(--done-soft);
+}
+
+.is-review {
+  background: var(--review-soft);
+}
+
+.is-blocked {
+  background: var(--danger-soft);
+}
+
+.is-progress {
+  background: var(--progress-soft);
+}
+
+.is-todo {
+  background: var(--todo-soft);
+}
+
+@media (max-width: 1080px) {
+  .hero,
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gantt-head,
+  .gantt-row {
+    grid-template-columns: 1fr;
+  }
+
+  .gantt-track {
+    min-width: 720px;
+  }
+}

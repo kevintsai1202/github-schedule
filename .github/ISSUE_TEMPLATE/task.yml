@@ -1,0 +1,57 @@
+name: 建立任務
+description: 以固定格式建立專案任務
+title: "[Task] "
+labels:
+  - status:todo
+  - type:task
+body:
+  - type: dropdown
+    id: task_type
+    attributes:
+      label: 類型
+      options:
+        - Feature
+        - Bug
+        - Task
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 說明
+      description: 請描述此任務的背景與目標
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 驗收條件
+      description: 以條列列出完成定義
+    validations:
+      required: true
+  - type: input
+    id: start_date
+    attributes:
+      label: 預計開始日
+      placeholder: 2026-03-16
+  - type: input
+    id: target_date
+    attributes:
+      label: 預計截止日
+      placeholder: 2026-03-21
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 優先級
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
+    validations:
+      required: true
+  - type: textarea
+    id: blocked_reason
+    attributes:
+      label: 阻塞說明
+      description: 若無則填寫「無」
