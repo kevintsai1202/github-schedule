@@ -11,7 +11,8 @@ import type {
  */
 export async function fetchProjectSnapshot(): Promise<ProjectSnapshot> {
   const version = Date.now();
-  const response = await fetch(`${import.meta.env.BASE_URL}project-data.json?v=${version}`, {
+  const baseUrl = new URL(import.meta.env.BASE_URL, window.location.origin);
+  const response = await fetch(new URL(`project-data.json?v=${version}`, baseUrl), {
     cache: "no-store"
   });
 

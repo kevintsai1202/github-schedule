@@ -38,6 +38,7 @@ jobs:
       GITHUB_PROJECT_STATUS_DONE_OPTION_ID: ${{ vars.GITHUB_PROJECT_STATUS_DONE_OPTION_ID }}
       GITHUB_PROJECT_STATUS_BLOCKED_OPTION_ID: ${{ vars.GITHUB_PROJECT_STATUS_BLOCKED_OPTION_ID }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      VITE_BASE_URL: /github-schedule/
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

@@ -131,6 +131,7 @@ High
 - 依 `startDate`、`targetDate` 與 `status` 產生甘特圖資料
 - 前端讀取時需加上 cache-busting 並使用 `no-store`
 - 前端讀取路徑需以 Vite `BASE_URL` 組合，不得寫死為 `/project-data.json`
+- GitHub Pages build 時需注入 `VITE_BASE_URL=/github-schedule/`，其他環境預設 `/`
 
 ## 3. Gantt Mutation API
 

@@ -18,6 +18,7 @@
 | T12 | 使用 gh 建立遠端 repo 並發佈 | Completed | 已建立 repo、push、啟用 Pages workflow 並成功部署 |
 | T13 | 建立 gh 欄位探索腳本、Vercel 設定與 Variables 文件 | Completed | 已補欄位探索腳本、vercel.json 與 Variables 文件 |
 | T14 | 修正 GitHub Pages 子路徑白屏並補更多測試資料 | Completed | 已改相對資產路徑並新增 3 筆示例任務 |
+| T15 | 修正無尾斜線 Pages URL 造成 JSON 路徑錯誤 | Completed | 已改為依部署環境注入 base path |
 
 ## 執行紀錄
 
@@ -33,3 +34,5 @@
 - 2026-03-13：完成 T13，已補 `print-project-field-ids`、`set-github-project-vars.ps1`、`vercel.json` 與 Variables 文件。
 - 2026-03-13：開始進行 T14，準備修正 GitHub Pages 子路徑白屏並補更多測試資料。
 - 2026-03-13：完成 T14，已修正 Pages 子路徑資產載入並補上更多測試資料，測試與建置通過。
+- 2026-03-13：開始進行 T15，準備修正無尾斜線 Pages URL 導致 `project-data.json` 路徑解析錯誤。
+- 2026-03-13：完成 T15，已改成依部署環境注入 base path，避免無尾斜線 URL 抓錯 JSON 路徑。

@@ -22,6 +22,7 @@
 - Vercel 僅負責 `api/` 路徑的 Functions 部署，前端靜態頁仍由 GitHub Pages 提供。
 - 專案需提供 `gh` 腳本自動列出 Project field id 與 status option id，降低手動設定成本。
 - GitHub Pages 前端資產與 `project-data.json` 載入必須支援 repo 子路徑，不可硬編碼根路徑。
+- base path 需由部署環境注入，GitHub Pages 與 Vercel 不可共用同一個硬編碼路徑。
 
 ## 2. 資料模型
 
