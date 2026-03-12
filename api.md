@@ -6,6 +6,7 @@
 - GitHub Issue Forms 輸入契約
 - GitHub Pages 靜態資料介面
 - Vercel Functions 變更寫入 API
+- `gh` CLI 專案初始化輔助腳本
 
 ## 1. Issue Form 契約
 
@@ -284,3 +285,16 @@ High
 - Status 與 Assignees 需同時維護 Project 欄位與 Issue 對應欄位。
 - 第一版只支援單一 repo、單一 GitHub Project。
 - Pages 發布需在 Repository Settings 的 `Pages > Build and deployment` 選擇 `GitHub Actions`。
+
+## 8. gh 輔助腳本
+
+### 8.1 列出 Project 欄位與 option id
+
+- Command：`node scripts/print-project-field-ids.mjs --project-id <project-id>`
+- 說明：列出 Project 欄位 id、`Status` option id，並輸出推薦的 GitHub Variables 內容
+- 前置：`gh auth refresh -s read:project`
+
+### 8.2 輸出 Variables 樣板
+
+- Command：`node scripts/print-project-field-ids.mjs --project-id <project-id> --repo <owner/repo>`
+- 說明：補上 repo 名稱後，輸出可直接複製到 GitHub Repository Variables 的鍵值清單

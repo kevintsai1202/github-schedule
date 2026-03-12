@@ -16,6 +16,7 @@
 | T10 | 實作真實 GitHub Project v2 欄位同步 | Completed | 已接 GraphQL 欄位更新與 Issue label/assignee 同步 |
 | T11 | 補齊 GitHub Pages 正式部署設定 | Completed | 已改為官方 Pages actions 部署流程 |
 | T12 | 使用 gh 建立遠端 repo 並發佈 | Completed | 已建立 repo、push、啟用 Pages workflow 並成功部署 |
+| T13 | 建立 gh 欄位探索腳本、Vercel 設定與 Variables 文件 | Completed | 已補欄位探索腳本、vercel.json 與 Variables 文件 |
 
 ## 執行紀錄
 
@@ -27,3 +28,5 @@
 - 2026-03-13：完成 T10、T11，已接上 GitHub GraphQL/REST 同步與官方 Pages 部署 workflow，測試與建置再次通過。
 - 2026-03-13：開始進行 T12，準備透過 gh 建立 repo 並直接發佈。
 - 2026-03-13：完成 T12，已用 gh 建立 `kevintsai1202/github-schedule`、啟用 Pages workflow，站點回應 200。
+- 2026-03-13：開始進行 T13，準備補 gh 欄位探索腳本、Vercel 設定與 Variables 文件。
+- 2026-03-13：完成 T13，已補 `print-project-field-ids`、`set-github-project-vars.ps1`、`vercel.json` 與 Variables 文件。

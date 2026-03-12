@@ -19,6 +19,8 @@
 - GitHub Actions 用於資料彙整與 Pages 部署，維持 GitHub-native 工作流。
 - Project 欄位同步採 GitHub GraphQL，Issue labels / assignees 採 GitHub REST，同步責任分離。
 - GitHub Pages 採官方 `configure-pages`、`upload-pages-artifact`、`deploy-pages` workflow。
+- Vercel 僅負責 `api/` 路徑的 Functions 部署，前端靜態頁仍由 GitHub Pages 提供。
+- 專案需提供 `gh` 腳本自動列出 Project field id 與 status option id，降低手動設定成本。
 
 ## 2. 資料模型
 
@@ -213,6 +215,11 @@ function deployPages():
   build vite
   upload pages artifact
   deploy to github pages
+
+function printProjectFieldIds(projectId):
+  fetch project fields with gh api graphql
+  print field id, field name, option id mapping
+  print repository variables template
 ```
 
 ## 5. 系統脈絡圖
@@ -390,5 +397,6 @@ stateDiagram-v2
 - API 更新失敗時，前端需回滾 optimistic state。
 - `project-data.json` 必須統一來自 GitHub Issues、PRs、Projects 資料。
 - GitHub Pages workflow 必須使用官方 Pages actions 完成部署。
+- 專案需提供可在 PowerShell 7+ 執行的 `gh` 腳本輸出 Project 欄位與變數樣板。
 - PR merge 後，關聯任務需同步轉為 `done`。
 - 手機版至少可讀取甘特圖與摘要；桌機版需可完整編輯。
