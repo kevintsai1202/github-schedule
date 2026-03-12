@@ -22,12 +22,12 @@
     }
   ],
   "summary": {
-    "totalItems": 5,
-    "doneItems": 1,
-    "inProgressItems": 2,
+    "totalItems": 8,
+    "doneItems": 2,
+    "inProgressItems": 3,
     "blockedItems": 1,
     "overdueItems": 1,
-    "completionRate": 20
+    "completionRate": 25
   },
   "workItems": [
     {
@@ -129,6 +129,77 @@
       "linkedPrs": [],
       "labels": ["status:todo", "type:automation"],
       "updatedAt": "2026-03-12T18:00:00Z"
+    },
+    {
+      "id": "issue-17",
+      "issueNumber": 17,
+      "issueUrl": "https://github.com/kevintsai1202/github-schedule/issues/17",
+      "title": "建立 GitHub Variables 匯入與 bootstrap 文件",
+      "status": "todo",
+      "priority": "Medium",
+      "milestone": "Sprint 2",
+      "assignees": [
+        { "login": "alice", "name": "Alice", "avatarUrl": "https://avatars.githubusercontent.com/u/1?v=4" }
+      ],
+      "projectItemId": "PVTI_demo_17",
+      "projectId": "PVT_demo_001",
+      "startDate": "2026-03-21",
+      "targetDate": "2026-03-23",
+      "durationDays": 3,
+      "progressState": "on-track",
+      "blockedReason": "",
+      "linkedPrs": [],
+      "labels": ["status:todo", "type:docs"],
+      "updatedAt": "2026-03-13T00:10:00Z"
+    },
+    {
+      "id": "issue-18",
+      "issueNumber": 18,
+      "issueUrl": "https://github.com/kevintsai1202/github-schedule/issues/18",
+      "title": "Vercel API 與 GitHub Pages 網域切換設定",
+      "status": "in-progress",
+      "priority": "High",
+      "milestone": "Sprint 2",
+      "assignees": [
+        { "login": "bob", "name": "Bob", "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4" }
+      ],
+      "projectItemId": "PVTI_demo_18",
+      "projectId": "PVT_demo_001",
+      "startDate": "2026-03-19",
+      "targetDate": "2026-03-25",
+      "durationDays": 7,
+      "progressState": "on-track",
+      "blockedReason": "",
+      "linkedPrs": [
+        { "number": 58, "title": "feat: configure vercel api base url", "url": "https://github.com/kevintsai1202/github-schedule/pull/58", "state": "open" }
+      ],
+      "labels": ["status:in-progress", "type:infra"],
+      "updatedAt": "2026-03-13T00:20:00Z"
+    },
+    {
+      "id": "issue-19",
+      "issueNumber": 19,
+      "issueUrl": "https://github.com/kevintsai1202/github-schedule/issues/19",
+      "title": "建立多 Sprint 甘特圖縮放與群組檢視",
+      "status": "done",
+      "priority": "High",
+      "milestone": "Sprint 3",
+      "assignees": [
+        { "login": "alice", "name": "Alice", "avatarUrl": "https://avatars.githubusercontent.com/u/1?v=4" },
+        { "login": "bob", "name": "Bob", "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4" }
+      ],
+      "projectItemId": "PVTI_demo_19",
+      "projectId": "PVT_demo_001",
+      "startDate": "2026-03-22",
+      "targetDate": "2026-03-28",
+      "durationDays": 7,
+      "progressState": "done",
+      "blockedReason": "",
+      "linkedPrs": [
+        { "number": 59, "title": "feat: gantt zoom and swimlanes", "url": "https://github.com/kevintsai1202/github-schedule/pull/59", "state": "merged" }
+      ],
+      "labels": ["status:done", "type:feature"],
+      "updatedAt": "2026-03-13T00:30:00Z"
     }
   ]
 }

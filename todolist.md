@@ -17,6 +17,7 @@
 | T11 | 補齊 GitHub Pages 正式部署設定 | Completed | 已改為官方 Pages actions 部署流程 |
 | T12 | 使用 gh 建立遠端 repo 並發佈 | Completed | 已建立 repo、push、啟用 Pages workflow 並成功部署 |
 | T13 | 建立 gh 欄位探索腳本、Vercel 設定與 Variables 文件 | Completed | 已補欄位探索腳本、vercel.json 與 Variables 文件 |
+| T14 | 修正 GitHub Pages 子路徑白屏並補更多測試資料 | Completed | 已改相對資產路徑並新增 3 筆示例任務 |
 
 ## 執行紀錄
 
@@ -30,3 +31,5 @@
 - 2026-03-13：完成 T12，已用 gh 建立 `kevintsai1202/github-schedule`、啟用 Pages workflow，站點回應 200。
 - 2026-03-13：開始進行 T13，準備補 gh 欄位探索腳本、Vercel 設定與 Variables 文件。
 - 2026-03-13：完成 T13，已補 `print-project-field-ids`、`set-github-project-vars.ps1`、`vercel.json` 與 Variables 文件。
+- 2026-03-13：開始進行 T14，準備修正 GitHub Pages 子路徑白屏並補更多測試資料。
+- 2026-03-13：完成 T14，已修正 Pages 子路徑資產載入並補上更多測試資料，測試與建置通過。
